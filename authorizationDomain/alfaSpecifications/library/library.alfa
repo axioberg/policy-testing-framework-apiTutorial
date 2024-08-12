@@ -1,0 +1,26 @@
+namespace tutorial.library {
+import tutorial.attributes.*
+
+/*
+ * Permit if a record is in their region  
+ */
+ rule usersInSameRegionArePermitted{
+	permit
+	condition user.region == record.region	
+	}
+/*
+ * Permit if a record is in their own department  
+ */
+rule usersInSameDeptArePermitted{
+	permit
+	condition user.department == record.department	
+	}
+/*
+* Permit the owner of a record
+*/	
+rule ownerOfTheRecordIsPermitted{
+	permit
+	condition record.owner == user.uid
+}
+	
+}

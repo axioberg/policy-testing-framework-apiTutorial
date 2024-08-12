@@ -1,0 +1,16 @@
+namespace com.axiomatics.example{
+    policyset coffee{
+        target clause objectType == "coffee"
+        apply firstApplicable
+        policy order{
+            target clause action == "order"
+            apply firstApplicable
+            rule customer{
+                permit
+                target clause user.role == "customer"
+                condition account.balance >= drink.price
+            }
+        }
+    }
+}
+    

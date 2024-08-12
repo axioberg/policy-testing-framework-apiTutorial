@@ -1,0 +1,157 @@
+namespace tutorial.records {
+
+import Attributes.*	
+import tutorial.*
+import tutorial.attributes.*
+
+/*
+ * APS Tutorial Records policy
+ */
+policyset mainRecords{
+	target clause stringEqualIgnoreCase("/record", api.path)
+	apply denyUnlessPermit		    
+	 /*
+	  * Global Deny Checks
+	  */
+	  policy globalDenyChecks{
+	  	apply permitOverrides
+	  	/*
+	  	 * Deny if the user does not have a role
+	  	 */
+	  	 rule denyIfTheUserDoesNotHaveARole{
+	  	 	deny
+	  	 	condition stringBagSize(user.role) == 0
+	  	 	on deny{
+	  	 		advice tutorialAdvice{
+	  	 			message.denyReason = "I'm sorry " + stringOneAndOnly(user.uid) +  " I'm afraid you can't do that because you do not have a role"
+	  	 		}
+	  	 	}
+	  	 }
+	  }
+	 /*
+	  * View Records
+	  */
+	  policyset viewRecords{
+	  target clause api.method == "GET"
+	  apply firstApplicable	  
+	    /*
+	     * Policies for Managers viewing records
+	     */
+	    policy managersViewRecords{
+	        target clause user.role == "manager" 
+	    	apply firstApplicable
+	    	/*
+	  		 * R1 - A manager can view any record
+	  	     */
+	 	     rule managersCanView{
+	    	  	permit
+	    	  }   	
+	    } //managersViewRecords
+	    
+		policy intern{ 
+			target clause user.role == "intern"
+			apply denyUnlessPermit
+
+		    rule clientView{
+				permit
+			
+				condition record.department == user.department
+				
+				on permit{
+					obligation fields  {
+						mask_fields = "owner"
+						mask_fields = "status"
+					}
+				}
+			}
+		}
+	
+		policy employeesViewRecords{
+	        target clause user.role == "employee" 
+	    	apply firstApplicable
+			/*
+		 	 * R2 - An employee can view a record in their own department  
+		 	 */
+		 	rule employeeCanViewIfSameDepartment{
+		 		permit
+		    	condition user.department == record.department
+		 	} 
+
+			/* Optionally inline a rule from a library */
+			library.usersInSameDeptArePermitted
+            library.ownerOfTheRecordIsPermitted
+		 		    
+		    /*
+		     * Deny Catch all (else Deny)
+		     */
+		     rule elseDeny{
+		     	deny
+		     } 	
+	   } //employeeViewRecord	 
+	 } // View Records   
+	 
+	 /*
+	  * Edit Records
+	  */
+	 policyset editRecords{
+	  target clause api.method == "UPDATE"
+	  apply firstApplicable
+	  /*
+	   * Policies for employees editing records
+	   */
+	  policy employeeEditRecord{
+	  	target clause user.role == "employee"
+	  	apply firstApplicable
+	  	 /*
+		  * R3 - An employee can edit a record they own, if it is in draft mode  
+	 	  */
+		 rule employeeCanEdit{
+	  	 	permit
+	   	 	target clause record.status == "draft"
+	   	 	condition user.employeeId == record.owner
+	 	 } 
+	 	 	    
+	    /*
+	     * Deny Catch all (else Deny)
+	     */
+	     rule elseDeny{
+	     	deny
+	     }
+	  } // employeeEditRecord
+		
+	 } // Edit records   
+	 
+	 /*
+	  * Publish Records
+	  */
+	  policyset publishRecords{
+	  target clause api.method == "POST"
+	  apply firstApplicable
+	    /*
+	     * Policies for Managers viewing records
+	     */
+	    policy managersViewRecords{
+	        target clause user.role == "manager" 
+	    	apply firstApplicable
+  			/*
+	 		 * R4 - A manager can publish a record if the record is in final mode 
+	 		 * and it belongs to a employee below that manager.  
+	 		 */
+			  rule managerCanPublish{
+			    permit
+			    target clause record.status == "final"
+			    condition  record.owner == user.subordinate
+			  }  
+			  /*
+			   * Deny Catch all (else Deny)
+	           */
+			   rule elseDeny{
+			   	deny
+			   }
+		 } //managersPublishRecords
+	 } //publishRecords  
+} //Records
+
+
+
+} // tutorial.records
