@@ -10,7 +10,7 @@ import tutorial.attributes.*
 policyset main{
 	apply firstApplicable
 	/*
-	 * Master APS Tutorial Records policy
+	 * Tutorial Records policy
 	 */
 	policyset tutorialRecords{
 		target clause stringEqualIgnoreCase("/record", api.path)
