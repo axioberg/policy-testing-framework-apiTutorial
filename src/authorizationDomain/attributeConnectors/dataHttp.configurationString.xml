@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://www.axiomatics.com/http.config" identifier="recordData">
+	<connection>
+		<url>https://my-json-server.typicode.com/axiomatics/data/record/{0}</url>
+		<connectionKey>
+			<xacmlAttribute
+				Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+				AttributeId="record.recordId"
+				DataType="http://www.w3.org/2001/XMLSchema#string"/>
+		</connectionKey>
+		<method>GET</method>
+	</connection>
+	<mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="record.json" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+	</mapping>
+</configuration>

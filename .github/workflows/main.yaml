@@ -40,10 +40,10 @@ jobs:
           java-version: '11'
 
       #- run: java -jar "bin/alfac.jar" "./alfa" -o ./xacml 
-      - run: java -jar "bin/alfac.jar" "./authorizationDomain/alfaSpecifications" -m http://axiomatics.com/alfa/identifier/${{ env.ALFA_MAIN}} -o ./authorizationDomain/xacmlSpecifications
+      - run: java -jar "bin/alfac.jar" "./src/authorizationDomain/alfaSpecifications" -m http://axiomatics.com/alfa/identifier/${{ env.ALFA_MAIN}} -o ./src/authorizationDomain/xacmlSpecifications
 
       #- run: bin/domtool-0.10.0/bin/domtool domain --identity=api-demo --main-policy-id=http://axiomatics.com/alfa/identifier/tutorial.main --attributes=./config/attributes.yaml  -o ${{ env.DOMAIN_OUTPUT }} --xacml-specifications ./xacml 
-      - run: bin/domtool-0.10.0/bin/domtool domain -i ./authorizationDomain -m http://axiomatics.com/alfa/identifier/${{ env.ALFA_MAIN}} --xacml-specifications ./authorizationDomain/xacmlSpecifications -o ${{ env.DOMAIN_OUTPUT }}
+      - run: bin/domtool-0.10.0/bin/domtool domain -i ./src/authorizationDomain -m http://axiomatics.com/alfa/identifier/${{ env.ALFA_MAIN}} --xacml-specifications ./src/authorizationDomain/xacmlSpecifications -o ${{ env.DOMAIN_OUTPUT }}
 
       #- name: Analyze Domain
       #  uses: davidjbrossard/domain-analyzer@v1.4
