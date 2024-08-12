@@ -1,6 +1,0 @@
-className: com.axiomatics.attributeconnector.parser.json.ConnectorModule
-provides:
-- record.owner
-- record.region
-- record.status
-- record.department

@@ -1,6 +1,0 @@
-className: com.axiomatics.attributeconnector.parser.jwt.ConnectorModule
-provides:
-- user.uid
-- user.role
-- user.department
-- user.region

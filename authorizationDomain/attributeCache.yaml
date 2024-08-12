@@ -1,3 +1,0 @@
-record.json:
-  timeToLive: 1 hour
-  maxItems: 100
