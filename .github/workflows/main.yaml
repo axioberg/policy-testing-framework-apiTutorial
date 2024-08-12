@@ -1,0 +1,66 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy to GitHub Pages
+env:
+  DOMAIN_OUTPUT: './domain_tutorial.yaml'
+  MD_OUTPUT: './domain.md'
+  ALFA_MAIN: 'tutorial.main'
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu' # See 'Supported distributions' for available options
+          java-version: '11'
+
+      #- run: java -jar "bin/alfac.jar" "./alfa" -o ./xacml 
+      - run: java -jar "bin/alfac.jar" "./authorizationDomain/alfaSpecifications" -m http://axiomatics.com/alfa/identifier/${{ env.ALFA_MAIN}} -o ./authorizationDomain/xacmlSpecifications
+
+      #- run: bin/domtool-0.10.0/bin/domtool domain --identity=api-demo --main-policy-id=http://axiomatics.com/alfa/identifier/tutorial.main --attributes=./config/attributes.yaml  -o ${{ env.DOMAIN_OUTPUT }} --xacml-specifications ./xacml 
+      - run: bin/domtool-0.10.0/bin/domtool domain -i ./authorizationDomain -m http://axiomatics.com/alfa/identifier/${{ env.ALFA_MAIN}} --xacml-specifications ./authorizationDomain/xacmlSpecifications -o ${{ env.DOMAIN_OUTPUT }}
+
+      #- name: Analyze Domain
+      #  uses: davidjbrossard/domain-analyzer@v1.4
+      #  with:
+      #    domain-file: ${{ env.DOMAIN_OUTPUT }}
+      #    output-file: ${{ env.MD_OUTPUT}}
+      - run: |
+          mkdir -p ./_site
+          cp ${{ env.DOMAIN_OUTPUT }} ./_site
+          # cp ./ads_deployment.yaml ./_site
+          # cp ${{ env.MD_OUTPUT }} ./_site
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './_site'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
