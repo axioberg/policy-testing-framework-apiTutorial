@@ -44,7 +44,7 @@ policyset mainRecords{
 	  		 * R1 - A manager can view any record
 	  	     */
 	 	     rule managersCanView{
-	    	  	deny
+	    	  	permit
 	    	  }   	
 	    } //managersViewRecords
 	    
