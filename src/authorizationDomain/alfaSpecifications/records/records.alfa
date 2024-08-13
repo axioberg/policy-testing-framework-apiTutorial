@@ -44,27 +44,11 @@ policyset mainRecords{
 	  		 * R1 - A manager can view any record
 	  	     */
 	 	     rule managersCanView{
-	    	  	permit
+	    	  	deny
 	    	  }   	
 	    } //managersViewRecords
 	    
-		policy intern{ 
-			target clause user.role == "intern"
-			apply denyUnlessPermit
-
-		    rule clientView{
-				permit
-			
-				condition record.department == user.department
-				
-				on permit{
-					obligation fields  {
-						mask_fields = "owner"
-						mask_fields = "status"
-					}
-				}
-			}
-		}
+		
 	
 		policy employeesViewRecords{
 	        target clause user.role == "employee" 
@@ -87,7 +71,28 @@ policyset mainRecords{
 		     rule elseDeny{
 		     	deny
 		     } 	
-	   } //employeeViewRecord	 
+	   } //employeeViewRecord
+	   
+	   /*
+		* Polices for interns viewing records
+		*/
+		policy intern{ 
+			target clause user.role == "intern"
+			apply denyUnlessPermit
+
+		    rule clientView{
+				permit
+			
+				condition record.department == user.department
+				
+				on permit{
+					obligation fields  {
+						mask_fields = "owner"
+						mask_fields = "status"
+					}
+				}
+			}
+		} //internViewRecords
 	 } // View Records   
 	 
 	 /*
