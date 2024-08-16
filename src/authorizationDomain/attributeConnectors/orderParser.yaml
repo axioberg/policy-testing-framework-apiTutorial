@@ -1,0 +1,5 @@
+className: com.axiomatics.attributeconnector.parser.json.ConnectorModule
+provides:
+- order.uid
+- order.country
+- account.number

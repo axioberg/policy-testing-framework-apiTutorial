@@ -48,8 +48,9 @@ policyset mainRecords{
 	    	  }   	
 	    } //managersViewRecords
 	    
-		
-	
+	    /*
+	     * Policies for Employees viewing records
+	     */
 		policy employeesViewRecords{
 	        target clause user.role == "employee" 
 	    	apply firstApplicable

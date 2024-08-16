@@ -1,0 +1,47 @@
+{
+    "account": [
+      {
+        "id": "Carol",
+        "department": "Engineering",
+        "roles": [
+          "employee"
+        ]
+      },
+      {
+        "id": "Dan",
+        "department": "Finance",
+        "roles": [
+          "client"
+        ]
+      },
+      {
+        "id": "Elena",
+        "department": "Finance",
+        "roles": [
+          "employee"
+        ]
+      },
+      {
+        "id": "Tim",
+        "department": "Engineering",
+        "roles": [
+          "SVP",
+          "Administration and Finance"
+        ]
+      },
+      {
+        "id": "Bob",
+        "department": "Finance",
+        "roles": [
+          "employee"
+        ]
+      },
+      {
+        "id": "Alice",
+        "department": "Sales",
+        "roles": [
+          "manager"
+        ]
+      }
+    ]
+  }

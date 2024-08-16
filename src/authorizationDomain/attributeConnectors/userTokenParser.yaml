@@ -4,3 +4,5 @@ provides:
 - user.role
 - user.department
 - user.region
+- user.age
+- user.country

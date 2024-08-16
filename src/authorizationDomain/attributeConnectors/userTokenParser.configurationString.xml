@@ -33,4 +33,14 @@
 			AttributeId="user.region" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
 		<claim>region</claim>
 	</mapping>
+	<mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+			AttributeId="user.country" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
+		<claim>country</claim>
+	</mapping>
+	<mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+			AttributeId="user.age" DataType="http://www.w3.org/2001/XMLSchema#integer" Issuer="" />
+		<claim>age</claim>
+	</mapping>	
 </configuration>

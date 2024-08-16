@@ -1,0 +1,145 @@
+namespace demo{ 
+    namespace user{
+        attribute uid {
+            id = "user.uid"
+            type = string
+            category = subjectCat
+        }
+        attribute token {
+            id = "user.token"
+            type = string
+            category = subjectCat
+        }
+        attribute role {
+            id = "user.role"
+            type = string
+            category = subjectCat
+        }
+        attribute country {
+            id = "user.country"
+            type = string
+            category = subjectCat
+        }
+        attribute age {
+            id = "user.age"
+            type = integer
+            category = subjectCat
+        }
+        attribute accountId {
+            id = "user.accountId"
+            type = integer
+            category = subjectCat
+        }
+    } //user
+
+    namespace account{
+        attribute guid {
+            id = "account.guid"
+            type = string
+            category = resourceCat
+        }
+        attribute owner {
+            id = "account.owner"
+            type = string
+            category = resourceCat
+        }
+        attribute status {
+            id = "account.status"
+            type = string
+            category = resourceCat
+        }
+        attribute class {
+            id = "account.class"
+            type = string
+            category = resourceCat
+        }    
+        attribute member {
+            id = "account.member"
+            type = string
+            category = resourceCat
+        }   
+        attribute balance {
+            id = "account.balance"
+            type = double
+            category = resourceCat
+        }
+    } //account
+
+    namespace order{
+        attribute guid {
+            id = "order.number"
+            type = integer
+            category = resourceCat
+        }   
+        attribute country {
+            id = "order.country"
+            type = string
+            category = resourceCat
+        }
+        attribute uid {
+            id = "order.uid"
+            type = string
+            category = resourceCat
+        }
+        attribute accountId {
+            id = "order.account"
+            type = integer
+            category = resourceCat
+        }        
+    }
+    namespace promotion{ 
+        attribute guid{ 
+            id = "promotion.guid"
+            type =  string
+            category = resourceCat
+        }
+        attribute country{ 
+            id = "promotion.country"
+            type =  string
+            category = resourceCat
+        }
+    } //promotion
+    namespace api{
+        attribute path {
+            id = "api.path"
+            type = string
+            category = resourceCat
+            }
+        attribute method {
+            id = "api.method"
+            type = string
+            category = actionCat
+        }
+    } //api
+
+    obligation recieptFields = "recieptFields"
+    advice pathValidation = "advice.pathValidation"
+    advice message = "advice.message"
+    namespace message{
+        attribute denyReason{
+            id = "message.denyReason"
+            type = string
+            category = environmentCat
+        }
+        attribute permitReason{
+           id = "message.permitReason"
+           type = string
+           category = environmentCat
+       }
+       attribute policyPath{
+           id = "message.policyPath"
+           type = string
+           category = environmentCat
+       }
+   }
+    attribute allowed {
+        id = "allowed"
+        type = string
+        category = environmentCat
+    }
+    attribute currentDate{
+        id = "urn:oasis:names:tc:xacml:1.0:environment:current-date"
+        type = date
+        category = environmentCat
+    }
+}

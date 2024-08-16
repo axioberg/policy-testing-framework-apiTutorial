@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://www.axiomatics.com/attributeconnector/parser/json/configuration" identifier="accountParser">
+    <source>
+        <xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="account.json" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+		<!--json src="../data.json"/-->
+	</source> 
+	<mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="account.owner" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+		<jsonPath>$.owner</jsonPath>
+	</mapping>
+	<mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="account.member" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+		<jsonPath>$.member</jsonPath>
+	</mapping>
+	<mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="account.country" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+		<jsonPath>$.country</jsonPath>
+	</mapping>
+	<mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="account.class" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+		<jsonPath>$.type</jsonPath>
+	</mapping>
+</configuration>

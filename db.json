@@ -1,0 +1,295 @@
+
+{
+  "record": [{
+      "id": 123,
+      "department": "Sales",
+      "owner": "Alice",
+      "status": "draft"
+    },
+    {
+      "id": 124,
+      "department": "Engineering",
+      "owner": "Bob",
+      "status": "final"
+    },
+    {
+      "id": 125,
+      "department": "Engineering",
+      "owner": "Carol",
+      "status": "draft"
+    },
+    {
+      "id": 126,
+      "department": "Engineering",
+      "owner": "Dan",
+      "status": "final"
+    },
+    {
+      "id": 127,
+      "department": "Sales",
+      "owner": "Elena",
+      "status": "draft"
+    },
+    {
+      "id": 128,
+      "department": "Sales",
+      "owner": "Alice",
+      "status": "final"
+    },
+    {
+      "id": 129,
+      "department": "Sales",
+      "owner": "Bob",
+      "status": "draft"
+    },
+    {
+      "id": 130,
+      "department": "Engineering",
+      "owner": "Carol",
+      "status": "final"
+    },
+    {
+      "id": 131,
+      "department": "Finance",
+      "owner": "Dan",
+      "status": "draft"
+    },
+    {
+      "id": 132,
+      "department": "Finance",
+      "owner": "Elena",
+      "status": "final"
+    },
+    {
+      "id": 133,
+      "department": "Sales",
+      "owner": "Alice",
+      "status": "draft"
+    },
+    {
+      "id": 134,
+      "department": "Sales",
+      "owner": "Bob",
+      "status": "final"
+    },
+    {
+      "id": 135,
+      "department": "Engineering",
+      "owner": "Carol",
+      "status": "draft"
+    },
+    {
+      "id": 136,
+      "department": "Finance",
+      "owner": "Dan",
+      "status": "final"
+    },
+    {
+      "id": 137,
+      "department": "Finance",
+      "owner": "Elena",
+      "status": "draft"
+    },
+    {
+      "id": 138,
+      "department": "Sales",
+      "owner": "Alice",
+      "status": "final"
+    },
+    {
+      "id": 139,
+      "department": "Sales",
+      "owner": "Bob",
+      "status": "draft"
+    },
+    {
+      "id": 140,
+      "department": "Engineering",
+      "owner": "Carol",
+      "status": "final"
+    },
+    {
+      "id": 141,
+      "department": "Finance",
+      "owner": "Dan",
+      "status": "draft"
+    },
+    {
+      "id": 142,
+      "department": "Finance",
+      "owner": "Elena",
+      "status": "final"
+    },
+    {
+      "id": 143,
+      "department": "Sales",
+      "owner": "Alice",
+      "status": "draft"
+    }
+  ],
+  "user": [{
+      "id": "Carol",
+      "department": "Engineering",
+      "roles": ["employee"]
+    },
+    {
+      "id": "Dan",
+      "department": "Finance",
+      "roles": ["client"]
+    },
+    {
+      "id": "Elena",
+      "department": "Finance",
+      "roles": ["employee"]
+    },
+    {
+      "id": "Tim",
+      "department": "Engineering",
+      "roles": ["SVP", "Administration and Finance"]
+    },
+    {
+      "id": "Bob",
+      "department": "Finance",
+      "roles": ["employee"]
+    },
+    {
+      "id": "Alice",
+      "department": "Sales",
+      "roles": ["manager"]
+    }
+  ],
+  {
+    "order": [
+      {
+        "id": 1,
+        "purchaseDate": "2024-06-01",
+        "accountId": "1",
+        "customerID": "Helen",
+        "country": "US",
+        "item": [
+          {
+            "name": "Espresso Macchiato",
+            "amount": 5.10
+          },
+          {
+            "name": "Chocolate Chip Cookie",
+            "amount": 3.00
+          }
+        ],
+        "accountBalance": 120
+      },
+      {
+        "id": 2,
+        "purchaseDate": "2024-07-01",
+        "accountId": "1",
+        "customerID": "Timmy",
+        "country": "US",
+        "item": [
+          {
+            "name": "Mocha Cookie Crumble Frappuccino",
+            "amount": 5.50
+          },
+          {
+            "name": "Double Chocolate Brownie",
+            "amount": 3.00
+          }
+        ],
+        "accountBalance": 120
+      },
+      {
+        "id": 3,
+        "purchaseDate": "2024-07-01",
+        "accountId": "2",
+        "customerID": "Terrance",
+        "country": "CA",
+        "item": [
+          {
+            "name": "Maple Syrup Vanilla Bean Crème Frappuccino® Blended Crème",
+            "amount": 5
+          },
+          {
+            "name": "Double Chocolate Brownie",
+            "amount": 5
+          }
+        ],
+        "accountBalance": 120
+      },
+      {
+        "id": 4,
+        "purchaseDate": "2024-07-01",
+        "accountId": "3",
+        "customerID": "Phillip",
+        "country": "CA",
+        "item": [
+          {
+            "name": "Maple Syrup Caramel Ribbon Crunch Crème Frappuccino® Blended Beverage",
+            "amount": 5
+          },
+          {
+            "name": "Cinnamon Coffee Cake",
+            "amount": 5
+          }
+        ],
+        "accountBalance": 120
+      },
+      {
+        "id": 5,
+        "purchaseDate": "2024-07-04",
+        "accountId": "",
+        "customerID": "Helen",
+        "country": "US",
+        "item": [
+          {
+            "name": "Espresso Macchiato",
+            "amount": 5.10
+          },
+          {
+            "name": "Rolled & Steel-Cut Oatmeal",
+            "amount": 3.50
+          }
+        ],
+        "accountBalance": 105.00
+      },
+      {
+        "id": 6,
+        "purchaseDate": "2024-07-08",
+        "accountId": "1",
+        "customerID": "Helen",
+        "country": "US",
+        "item": [
+          {
+            "name": "Vanilla Bean Crème Frappuccino® Blended Crème",
+            "amount": 5
+          }
+        ],
+        "accountBalance": 95.00
+      }
+    ],
+    "account": [
+      {
+        "id": 1,
+        "owner": "Helen",
+        "type": "Family",
+        "member": [
+            "Helen",
+            "Timmy"
+        ],
+        "country": "US"
+      },
+      {
+        "id": 2,
+        "owner": "Terrance",
+        "type": "Individual",
+        "member": ["Terrance"],
+        "country": "CA"
+      },
+      {
+        "id": 3,
+        "owner": "Phillip",
+        "type": "Individual",
+        "member": ["Phillip"],
+        "country": "CA"
+      }
+    ]
+  }
+}

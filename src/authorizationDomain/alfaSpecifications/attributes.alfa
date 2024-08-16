@@ -24,14 +24,18 @@ namespace com.axiomatics.example{
             }
     }
     namespace account{
+        attribute number {
+            id = "account.number"
+            type = integer
+            category = resourceCat
+            }
         attribute balance {
             id = "account.balance"
             type = double
-            category = subjectCat
+            category = resourceCat
             }
     }
-
-
+    
 }
 namespace tutorial.attributes{
 	
@@ -143,6 +147,8 @@ namespace tutorial.attributes{
         type = string
         category = resourceCat
     }
+    advice pathValidation = "advice.pathValidation"
+    advice message = "advice.message"
     advice tutorialAdvice = "tutorial.denyMessage"
     namespace message{
     	 attribute denyReason{
@@ -150,5 +156,15 @@ namespace tutorial.attributes{
     	 	type = string
     	 	category = environmentCat
     	 }
+         attribute permitReason{
+            id = "message.permitReason"
+            type = string
+            category = environmentCat
+        }
+        attribute policyPath{
+            id = "message.policyPath"
+            type = string
+            category = environmentCat
+        }
     }
 }

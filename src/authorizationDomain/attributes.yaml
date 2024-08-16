@@ -30,6 +30,50 @@ record.status:
   xacmlId: record.status
   category: Resource
   datatype: string
+order.number:
+  xacmlId: order.number
+  category: Resource
+  datatype: integer  
+order.json:
+  xacmlId: order.json
+  category: Resource
+  datatype: string  
+order.uid:
+  xacmlId: order.uid
+  category: Resource
+  datatype: string 
+order.accountId:
+  xacmlId: order.accountId
+  category: Resource
+  datatype: string
+order.country:
+  xacmlId: order.country
+  category: Resource
+  datatype: string         
+account.json:
+  xacmlId: account.json
+  category: Resource
+  datatype: string  
+account.number:
+  xacmlId: account.number
+  category: Resource
+  datatype: integer     
+account.owner:
+  xacmlId: account.owner
+  category: Resource
+  datatype: string   
+account.class:
+  xacmlId: account.class
+  category: Resource
+  datatype: string  
+account.country:
+  xacmlId: account.country
+  category: Resource
+  datatype: string    
+account.member:
+  xacmlId: account.member
+  category: Resource
+  datatype: string     
 user.employeeId:
   xacmlId: user.employeeId
   category: AccessSubject
@@ -58,6 +102,22 @@ user.region:
   xacmlId: user.region
   category: AccessSubject
   datatype: string
+user.country:
+  xacmlId: user.country
+  category: AccessSubject
+  datatype: string 
+user.age:
+  xacmlId: user.age
+  category: AccessSubject
+  datatype: integer  
+user.accountId:
+  xacmlId: user.accountId
+  category: AccessSubject
+  datatype: integer     
+user.region:
+  xacmlId: user.region
+  category: AccessSubject
+  datatype: string  
 api.path:
   xacmlId: api.path
   category: Resource

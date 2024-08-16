@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://www.axiomatics.com/attributeconnector/parser/json/configuration" identifier="orderParser">
+    <source>
+        <xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="order.json" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+		<!--<json src="../data.json"/-->
+	</source> 
+	<mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="order.country" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+		<jsonPath>$.country</jsonPath>
+	</mapping>
+	<mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="account.number" DataType="http://www.w3.org/2001/XMLSchema#integer" Issuer=""/>
+		<jsonPath>$.accountId</jsonPath>
+	</mapping>
+	<mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="order.uid" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer=""/>
+		<jsonPath>$.customerID</jsonPath>
+	</mapping>
+</configuration>

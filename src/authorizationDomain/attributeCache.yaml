@@ -1,3 +1,9 @@
 record.json:
   timeToLive: 1 day
   maxItems: 100
+order.json:
+  timeToLive: 1 day
+  maxItems: 100
+account.json:
+  timeToLive: 1 day
+  maxItems: 100

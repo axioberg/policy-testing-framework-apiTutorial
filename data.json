@@ -1,0 +1,134 @@
+{
+    "order": [
+      {
+        "id": 1,
+        "purchaseDate": "2024-06-01",
+        "accountId": "1",
+        "customerID": "Helen",
+        "country": "US",
+        "item": [
+          {
+            "name": "Espresso Macchiato",
+            "amount": 5.10
+          },
+          {
+            "name": "Chocolate Chip Cookie",
+            "amount": 3.00
+          }
+        ],
+        "accountBalance": 120
+      },
+      {
+        "id": 2,
+        "purchaseDate": "2024-07-01",
+        "accountId": "1",
+        "customerID": "Timmy",
+        "country": "US",
+        "item": [
+          {
+            "name": "Mocha Cookie Crumble Frappuccino",
+            "amount": 5.50
+          },
+          {
+            "name": "Double Chocolate Brownie",
+            "amount": 3.00
+          }
+        ],
+        "accountBalance": 120
+      },
+      {
+        "id": 3,
+        "purchaseDate": "2024-07-01",
+        "accountId": "2",
+        "customerID": "Terrance",
+        "country": "CA",
+        "item": [
+          {
+            "name": "Maple Syrup Vanilla Bean Crème Frappuccino® Blended Crème",
+            "amount": 5
+          },
+          {
+            "name": "Double Chocolate Brownie",
+            "amount": 5
+          }
+        ],
+        "accountBalance": 120
+      },
+      {
+        "id": 4,
+        "purchaseDate": "2024-07-01",
+        "accountId": "3",
+        "customerID": "Phillip",
+        "country": "CA",
+        "item": [
+          {
+            "name": "Maple Syrup Caramel Ribbon Crunch Crème Frappuccino® Blended Beverage",
+            "amount": 5
+          },
+          {
+            "name": "Cinnamon Coffee Cake",
+            "amount": 5
+          }
+        ],
+        "accountBalance": 120
+      },
+      {
+        "id": 5,
+        "purchaseDate": "2024-07-04",
+        "accountId": "",
+        "customerID": "Helen",
+        "country": "US",
+        "item": [
+          {
+            "name": "Espresso Macchiato",
+            "amount": 5.10
+          },
+          {
+            "name": "Rolled & Steel-Cut Oatmeal",
+            "amount": 3.50
+          }
+        ],
+        "accountBalance": 105.00
+      },
+      {
+        "id": 6,
+        "purchaseDate": "2024-07-08",
+        "accountId": "1",
+        "customerID": "Helen",
+        "country": "US",
+        "item": [
+          {
+            "name": "Vanilla Bean Crème Frappuccino® Blended Crème",
+            "amount": 5
+          }
+        ],
+        "accountBalance": 95.00
+      }
+    ],
+    "account": [
+      {
+        "id": 1,
+        "owner": "Helen",
+        "type": "Family",
+        "member": [
+            "Helen",
+            "Timmy"
+        ],
+        "country": "US"
+      },
+      {
+        "id": 2,
+        "owner": "Terrance",
+        "type": "Individual",
+        "member": ["Terrance"],
+        "country": "CA"
+      },
+      {
+        "id": 3,
+        "owner": "Phillip",
+        "type": "Individual",
+        "member": ["Phillip"],
+        "country": "CA"
+      }
+    ]
+  }

@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 env:
   DOMAIN_OUTPUT: './domain_tutorial.yaml'
   MD_OUTPUT: './domain.md'
-  ALFA_MAIN: 'tutorial.main'
+  ALFA_MAIN: 'demo.main'
 on:
   # Runs on pushes targeting the default branch
   push:
