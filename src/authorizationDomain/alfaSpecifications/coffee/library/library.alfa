@@ -48,6 +48,19 @@ rule permitAccountOwner{
 }
 
 /*
+* Account members are permitted
+*/
+rule permitAccountMember{ 
+    permit
+    condition account.member == user.uid
+    on permit{ 
+        advice message {
+            message.permitReason = "User is a member of account"
+        }
+    }
+}
+
+/*
 * Allow Adults On That Account
 */
 rule allowAdultsOnThatAccount{ 
@@ -67,24 +80,48 @@ rule allowAdults{
     permit
     condition user.age >= 18
 }
+
 /*
-* Minors on a family plan can only see their own orders
+* Adults on a family plan can only all orders on the account
 */
-rule minorsCanOnlyGetReceiptsForTheirOrders{ 
+rule adultsCanViewAllOrdersOnFamilyAccount{ 
     permit
-    condition order.uid == user.uid && user.age < 18 && account.class == "Family"
+    condition user.age >= 18
     on permit{ 
-        obligation recieptFields{
-            allowed = "field1"
-            allowed = "field2"
-        }
         obligation tutorial.attributes.fields{
             tutorial.attributes.mask_fields = "accountBalance"
         }
         advice message {
-            message.permitReason = "Minors can view their receipts"
+            message.permitReason = "Adults can view their orders"
+        }
+    }
+}
+/*
+* Minors on a family plan can only see their own orders on a Family account
+*/
+rule minorsCanOnlyViewTheirOwnOrders{ 
+    permit
+    condition order.uid == user.uid && user.age < 18
+    on permit{ 
+        obligation tutorial.attributes.fields{
+            tutorial.attributes.mask_fields = "accountBalance"
+        }
+        advice message {
+            message.permitReason = "Minors can view their orders"
+        }
+    }
+}
+/*
+* Low Human Score: Multi-Factor AuthN Required
+*/
+rule lowHumanAssuranceScore{ 
+    deny
+    condition operation.requiredHumanScore < user.humanScore
+    on deny {
+        obligation addtionalAction{ 
+            message.addtionalAction = "Require MFA"
         }
     }
 }
 
-}
+}//library

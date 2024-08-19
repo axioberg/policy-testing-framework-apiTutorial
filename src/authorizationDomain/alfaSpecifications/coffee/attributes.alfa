@@ -30,6 +30,11 @@ namespace demo{
             type = integer
             category = subjectCat
         }
+        attribute humanScore {
+            id = "user.humanScore"
+            type = integer
+            category = subjectCat
+        }
     } //user
 
     namespace account{
@@ -111,8 +116,15 @@ namespace demo{
             category = actionCat
         }
     } //api
-
-    obligation recieptFields = "recieptFields"
+    namespace operation{
+        attribute requiredHumanScore{ 
+            id = "operation.requiredHumanScore"
+            type = integer
+            category = environmentCat
+        }
+    }
+    obligation recieptFields = "obligation.recieptFields"
+    obligation addtionalAction = "obligation.addtionalAction"
     advice pathValidation = "advice.pathValidation"
     advice message = "advice.message"
     namespace message{
@@ -126,6 +138,11 @@ namespace demo{
            type = string
            category = environmentCat
        }
+       attribute addtionalAction{
+        id = "message.addtionalAction"
+        type = string
+        category = environmentCat
+    }
        attribute policyPath{
            id = "message.policyPath"
            type = string

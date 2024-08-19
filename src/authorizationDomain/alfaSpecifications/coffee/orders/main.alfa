@@ -1,0 +1,105 @@
+namespace demo.order{ 
+import demo.*
+
+/*
+* Policies for the order api
+*/
+policyset main{ 
+    target clause stringStartsWith("/order", api.path)
+    apply denyUnlessPermit   
+    /*
+    * View (GET)
+    */
+    policyset view{
+        target clause api.method == "GET"
+        apply denyUnlessPermit
+        /*
+        * Customer Policies
+        */ 
+        policyset customer{ 
+            target clause user.role == "Customer"
+            apply denyUnlessPermit
+            /*
+            * Universal Permit Reasons
+            */
+            policy universalPermitReasons{ 
+                apply firstApplicable
+                library.permitAccountOwner
+            }
+            /*
+            * Account Members
+            */ 
+            policyset accountMembers{ 
+                condition account.member == user.uid
+                apply firstApplicable
+                /*
+                * Individual Account
+                */
+                policy memberOfIndividualAccount{ 
+                    target clause account.class == "Individual"
+                    apply firstApplicable
+                        library.permitAccountMember  
+                }
+                /*
+                * Members of a family account
+                */
+                policy memberOfFamilyAccount{ 
+                    target clause account.class == "Family"
+                    apply firstApplicable
+                    library.adultsCanViewAllOrdersOnFamilyAccount
+                    library.minorsCanOnlyViewTheirOwnOrders
+                } //memberOfFamilyAccount 
+                
+            } //accountMembers
+            on permit{
+                advice pathValidation{
+                    message.policyPath = "Customers viewing orders"
+                }
+            }
+            on deny{
+                advice pathValidation{
+                    message.policyPath = "Customers viewing orders"
+                }
+            }
+        } //customer
+
+        /*
+        * Customer Service Team Members
+        */
+        policy customerService{ 
+            target clause user.role == "Customer Service"
+            apply denyUnlessPermit
+            /*
+            * Permit if in the same country the order was placed in
+            */
+            rule permitIfInSameCountryAsOrder{
+                permit
+                condition order.country == user.country
+                on permit{ 
+                    advice message {
+                        message.permitReason = "Customer Service reps can access orders in their country"
+                    }
+                }
+            }
+        } //customerService
+    } //view
+    /*
+    * Policies for the promotional order api
+    */
+    policyset promotionalOffers{ 
+        target clause api.path == "/order/promotion"
+        apply denyUnlessPermit
+        library.universalDenyRules
+        /*
+        * Place an order of a promotional item
+        */
+        policy placeOrder{
+            target clause api.method == "POST"
+            apply denyUnlessPermit
+
+            library.allowIfUserInCountryOfPromotion
+
+        } //placeOrder
+    } //promotionalOffers
+} //order
+}

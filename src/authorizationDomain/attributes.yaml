@@ -126,3 +126,7 @@ api.method:
   xacmlId: api.method
   category: Action
   datatype: string  
+operation.requiredHumanScore:
+  xacmlId: operation.requiredHumanScore
+  category: Environment
+  datatype: integer  

@@ -1,0 +1,19 @@
+namespace demo.account{
+import demo.* 
+
+ /*
+    * Policies for the account api
+    */
+    policyset main{ 
+        target clause stringStartsWith("/account", api.path)
+        apply denyUnlessPermit 
+        /*
+        * Updating an account
+        */  
+        policy updateAccount{
+            target clause api.method == "UPDATE"
+            apply denyUnlessPermit
+                library.permitAccountOwner
+        } //updateAccount
+    } // account
+}

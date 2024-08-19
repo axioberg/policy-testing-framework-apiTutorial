@@ -1,102 +1,25 @@
 namespace demo {
     
+/*
+* Main
+*/
 policyset main { 
-    apply firstApplicable
+apply firstApplicable
     /*
-    * Policies for the account api
+    * Policies for the order api
     */
     policyset order{ 
         target clause stringStartsWith("/order", api.path)
         apply denyUnlessPermit   
-        /*
-        * View (GET)
-        */
-        policyset view{
-            target clause api.method == "GET"
-            apply denyUnlessPermit
-            /*
-            * Customer Policies
-            */ 
-            policyset customer{ 
-                target clause user.role == "Customer"
-                apply denyUnlessPermit
-                /*
-                * Member of the account
-                */
-                policy memberOfAccount{ 
-                    condition account.member == user.uid
-                    apply firstApplicable
-                    library.permitAccountOwner
-                    library.minorsCanOnlyGetReceiptsForTheirOrders
-                }
-                on permit{
-                    advice pathValidation{
-                        message.policyPath = "Customers viewing receipts"
-                    }
-                }
-                on deny{
-                    advice pathValidation{
-                        message.policyPath = "Customers viewing receipts"
-                    }
-                }
-            } //customer
-
-            /*
-            * Customer Service Team Members
-            */
-            policy customerService{ 
-                target clause user.role == "Customer Service"
-                apply denyUnlessPermit
-                /*
-                * Perit if in the same country the order was placed in
-                */
-                rule permitIfInSameCountryAsOrder{
-                    permit
-                    condition order.country == user.country
-                    on permit{ 
-                        advice message {
-                            message.permitReason = "Customer Service reps can access receipts of order in their country"
-                        }
-                    }
-                }
-            } //customerService
-        } //view
-        /*
-        * Policies for the promotional order api
-        */
-        policyset promotionalOffers{ 
-            target clause api.path == "/order/promotion"
-            apply denyUnlessPermit
-            library.universalDenyRules
-            /*
-            * Place an order of a promotional item
-            */
-            policy placeOrder{
-                target clause api.method == "POST"
-                apply denyUnlessPermit
-
-                library.allowIfUserInCountryOfPromotion
-
-            } //placeOrder
-        } //promotionalOffers
-    } //order
-       
-
+        order.main
+    }
     /*
     * Policies for the account api
     */
     policyset account{ 
-        target clause stringStartsWith("/accunt", api.path)
-        apply denyUnlessPermit 
-        /*
-        * Updating an account
-        */  
-        policy updateAccount{
-            target clause api.method == "UPDATE"
-            apply denyUnlessPermit
-                library.permitAccountOwner
-        } //updateAccount
-    } // account
-} //main   
-
+        target clause stringStartsWith("/account", api.path)
+        apply denyUnlessPermit   
+        account.main    
+    } //order   
+} //main
 }
