@@ -100,7 +100,7 @@ rule adultsCanViewAllOrdersOnFamilyAccount{
 * Minors on a family plan can only see their own orders on a Family account
 */
 rule minorsCanOnlyViewTheirOwnOrders{ 
-    permit
+    deny
     condition order.uid == user.uid && user.age < 18
     on permit{ 
         obligation tutorial.attributes.fields{
