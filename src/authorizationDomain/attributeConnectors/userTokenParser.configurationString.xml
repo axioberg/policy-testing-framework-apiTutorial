@@ -37,4 +37,8 @@
 		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="user.group" DataType="http://www.w3.org/2001/XMLSchema#integer" Issuer="" />
 		<claim>grp</claim>
 	</mapping>
+	<mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="user.dob" DataType="http://www.w3.org/2001/XMLSchema#date" Issuer="" />
+		<claim>dob</claim>
+	</mapping>
 </configuration>
