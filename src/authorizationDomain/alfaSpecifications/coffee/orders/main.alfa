@@ -55,7 +55,7 @@ policyset main{
                 */
                 policy memberOfBusinessAccount{ 
                     target clause account.class == "Business"
-                    apply firstApplicable
+                    apply denyUnlessPermit
 
                 } //memberOfBusinessAccount
                 
