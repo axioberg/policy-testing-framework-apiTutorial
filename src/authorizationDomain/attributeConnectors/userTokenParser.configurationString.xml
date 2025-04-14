@@ -1,46 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration xmlns="http://www.axiomatics.com/attributeconnector/parser/jwt/configuration"
-	identifier="userTokenParser">
+<configuration xmlns="http://www.axiomatics.com/attributeconnector/parser/jwt/configuration" identifier="userTokenParser">
 	<source>
-		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
-			AttributeId="user.token" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="user.token" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
 	</source>
 	<signature allowAny="true">
-        <!-- JWT signature verification configuration -->
-    </signature>
+		<!-- JWT signature verification configuration -->
+	</signature>
 	<assertions>
-        <!-- checks that must pass, besides signature verification, for the token to be considered valid -->
-    </assertions>  
+		<!-- checks that must pass, besides signature verification, for the token to be considered valid -->
+	</assertions>
 	<mapping>
-		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
-			AttributeId="user.uid" DataType="http://www.w3.org/2001/XMLSchema#string"
-			Issuer="" />
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="user.uid" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
 		<claim>uid</claim>
 	</mapping>
 	<mapping>
-		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
-			AttributeId="user.department" DataType="http://www.w3.org/2001/XMLSchema#string"
-			Issuer="" />
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="user.department" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
 		<claim>department</claim>
 	</mapping>
 	<mapping>
-		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
-			AttributeId="user.role" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="user.role" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
 		<claim>role</claim>
 	</mapping>
 	<mapping>
-		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
-			AttributeId="user.region" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="user.region" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
 		<claim>region</claim>
 	</mapping>
 	<mapping>
-		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
-			AttributeId="user.country" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="user.country" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
 		<claim>country</claim>
 	</mapping>
 	<mapping>
-		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
-			AttributeId="user.age" DataType="http://www.w3.org/2001/XMLSchema#integer" Issuer="" />
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="user.age" DataType="http://www.w3.org/2001/XMLSchema#integer" Issuer="" />
 		<claim>age</claim>
-	</mapping>	
+	</mapping>
+	<mapping>
+		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="user.group" DataType="http://www.w3.org/2001/XMLSchema#integer" Issuer="" />
+		<claim>grp</claim>
+	</mapping>
 </configuration>
