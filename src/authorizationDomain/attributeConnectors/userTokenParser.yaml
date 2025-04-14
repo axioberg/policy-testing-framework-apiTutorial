@@ -6,3 +6,4 @@ provides:
 - user.region
 - user.age
 - user.country
+- user.group
