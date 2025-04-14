@@ -1,0 +1,27 @@
+namespace retail{
+    attribute objectType{
+        category = resourceCat
+        id = "retail.objectType"
+        type = string
+    }
+
+
+    // un acheteur peut voir un produit dans son departement
+    // un acheteur junior peut valider un achat d'un produit de son departement si le montant est inferieur a sa limite
+    policyset main{
+        apply firstApplicable
+        policy emergency{
+            apply firstApplicable
+            rule denyAll{
+                deny
+            }
+        }
+
+        policy achat{
+            target clause objectType=="achat"
+            apply firstApplicable
+
+        }
+    }   
+    
+}

@@ -114,10 +114,6 @@ user.accountId:
   xacmlId: user.accountId
   category: AccessSubject
   datatype: integer     
-user.region:
-  xacmlId: user.region
-  category: AccessSubject
-  datatype: string  
 api.path:
   xacmlId: api.path
   category: Resource

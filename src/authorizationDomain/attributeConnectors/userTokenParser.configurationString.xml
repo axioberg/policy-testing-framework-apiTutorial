@@ -3,7 +3,7 @@
 	identifier="userTokenParser">
 	<source>
 		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
-			AttributeId="user.token" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
+			AttributeId="user.jwt" DataType="http://www.w3.org/2001/XMLSchema#string" Issuer="" />
 	</source>
 	<signature allowAny="true">
         <!-- JWT signature verification configuration -->
@@ -15,7 +15,7 @@
 		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
 			AttributeId="user.uid" DataType="http://www.w3.org/2001/XMLSchema#string"
 			Issuer="" />
-		<claim>uid</claim>
+		<claim>sub</claim>
 	</mapping>
 	<mapping>
 		<xacmlAttribute Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"

@@ -9,13 +9,19 @@ import tutorial.attributes.*
  */
 policyset main{
 	apply firstApplicable
+	policy emergency{
+		apply firstApplicable
+		rule denyAll{
+			deny
+		}
+	}
 	/*
 	 * Tutorial Record policy
 	 */
 	policyset tutorialRecords{
-		target clause stringEqualIgnoreCase("/record", api.path)
+		target clause stringEndsWith("/record", api.path)
 	    apply firstApplicable	
-	      mainRecords
+	    mainRecords
 	} //tutorialRecords
 } // main
 

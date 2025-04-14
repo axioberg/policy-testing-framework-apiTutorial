@@ -8,7 +8,7 @@ import tutorial.attributes.*
  * APS Tutorial Records policy
  */
 policyset mainRecords{
-	target clause stringEqualIgnoreCase("/record", api.path)
+	target clause stringEndsWith("/record", api.path)
 	apply denyUnlessPermit		    
 	 /*
 	  * Global Deny Checks
@@ -63,7 +63,7 @@ policyset mainRecords{
 		 	} 
 
 			/* Optionally inline a rule from a library */
-			library.usersInSameDeptArePermitted
+			// library.usersInSameDeptArePermitted
             library.ownerOfTheRecordIsPermitted
 		 		    
 		    /*
