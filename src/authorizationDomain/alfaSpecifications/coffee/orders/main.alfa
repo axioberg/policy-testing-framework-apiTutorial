@@ -50,6 +50,15 @@ policyset main{
                     library.minorsCanOnlyViewTheirOwnOrders
                 } //memberOfFamilyAccount 
                 
+                /*
+                * Members of a business account
+                */
+                policy memberOfBusinessAccount{ 
+                    target clause account.class == "Business"
+                    apply firstApplicable
+
+                } //memberOfBusinessAccount
+                
             } //accountMembers
             on permit{
                 advice pathValidation{
