@@ -165,7 +165,7 @@ namespace tutorial.records {
 		 */
 		policyset publishRecords {
 			target
-				clause api.method == "POST"
+				clause api.method == "POST" or api.method == "PATCH"
 			apply firstApplicable
 
 			/*
